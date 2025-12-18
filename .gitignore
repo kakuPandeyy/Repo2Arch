@@ -1,0 +1,10 @@
+myenv
+node_modules
+.env
+.idea/
+.vscode
+*.log
+# Exclude compiled Python files
+__pycache__/
+*.pyc
+
