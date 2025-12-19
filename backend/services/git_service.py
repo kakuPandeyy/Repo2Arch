@@ -5,7 +5,7 @@ from git import Repo
 BASE_DIR = "cloned_repos"
 
 
-#extract user info for making floder name
+#extract user info for making floder
 
 def extract_user_repo(repo_url: str):
  
