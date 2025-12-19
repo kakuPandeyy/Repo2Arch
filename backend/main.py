@@ -1,7 +1,6 @@
 from fastapi import FastAPI
+from api.repo import router as repo_router
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello FastAPI"}
+app.include_router(repo_router)
