@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import  { useState } from "react";
+import { cloneRoute } from "../utils/endpoint";
+import axios from "axios";
 
 export default function Repo() {
   const [url, setUrl] = useState("");
 
-  const handleSubmit = () => {
-    console.log("Submitted URL:", url);
+  const handleSubmit = async () => {
+        
+
+      try {
+    const response = await axios.post(
+      cloneRoute,
+      {
+       "repo_url":url
+      }
+    );
+
+    console.log("Response:", response.data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+
+
   };
 
   return (
@@ -19,12 +36,12 @@ export default function Repo() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter GitHub or project URL..."
-          className="placeholder:text-gray-300   w-full h-18 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none "
+          className="placeholder:text-gray-300   text-amber-50  w-full h-18 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none "
         />
 
         <button
           onClick={handleSubmit}
-          className="mt-9 w-full  bg-gradient-to-r from-cyan-500 to-green-600 text-white py-3 rounded-xl font-medium hover:opacity-90 transition"
+          className=" transition  duration-150 ease-in-out transform  active:scale-95 mt-9 w-full  bg-gradient-to-r from-cyan-500 to-green-600 text-white py-3 rounded-xl font-medium hover:opacity-90 "
         >
           Submit
         </button>
